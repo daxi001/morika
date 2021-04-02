@@ -481,8 +481,4 @@ function showDivs(n) {
   x.eq(slideIndex-1).show();
 
 }
-
-
-
-
 </script>
