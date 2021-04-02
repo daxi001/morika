@@ -3,7 +3,7 @@
 <nav class="navbar navbar-light" style="background-color: #1f5881; height: 50px;">
 <div class="container-fluid NavbarContainer">
     <!-- <a class="navbar-brand">Navbar</a> -->
-    
+    <h1>მორიკა</h1>
     <h1>Helloo World</h1>
     <!-- <div> -->
       <form class="d-flex">
