@@ -1,10 +1,9 @@
-
 <?php include './header.php';?>
 <nav class="navbar navbar-light" style="background-color: #1f5881; height: 50px;">
 <div class="container-fluid NavbarContainer">
     <!-- <a class="navbar-brand">Navbar</a> -->
-    <h1>მორიკა</h1>
-    <h1>Helloo World</h1>
+    <h3 class="SiteTitle">მორიკა</h3>
+    
     <!-- <div> -->
       <form class="d-flex">
           <input class="form-control me-2 Searchinput" type="search" placeholder="Search" aria-label="Search">
