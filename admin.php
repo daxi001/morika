@@ -1,4 +1,4 @@
-<!-- baqari -->
+<!-- achia -->
 
 <?php include './header.php';?>
 <nav class="navbar navbar-light" style="background-color: #1f5881; height: 50px;">
@@ -17,7 +17,7 @@
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn"><span class="material-icons NavMenuSpan" onclick="myFunction()">more_vert</span></button>
             <div id="myDropdown" class="dropdown-content">
-                <a class="addCategoryBtn" href="#home"  data-bs-toggle="modal" data-bs-target=".addCategoryModal" data-bs-whatever="@addCategory"><span class="material-icons logoutIcon">add</span>&nbsp;კატეგორიის დამატება</a>
+                <a class="addCategoryBtn" href="#home"  data-bs-toggle="modal" data-bs-target="#showaddModal"><span class="material-icons logoutIcon">add</span>&nbsp;მეთოდები&nbsp;კატეგორიებზე</a>
                 <!-- <a href="#about" data-bs-toggle="modal" data-bs-target=".addProductModal" data-bs-whatever="@addProduct"><span class="material-icons logoutIcon">add</span>&nbsp;პროდუქტის დამატება</a> -->
                 <a href="#contact"><span class="material-icons logoutIcon">logout</span>&nbsp;გასვლა</a>
             </div>
@@ -50,49 +50,47 @@
 
 </div>
 
-<div class="modal fade scale-up-center addCategoryModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- კატეგორიის დამატების მოდალი -->
+<div class="modal fade scale-up-center addCategoryModal" id="showaddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <div class="modal-header" style="color: white;">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalLabel">მეთოდები კატეგორიებზე</h5>
         <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
       </div>
-      <!-- <form class="addCategory"> -->
       <div class="modal-body" >
         <div class="addDiv" style="display: flex; align-items: center;">
             
         </div>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="submit" class="btn btn-primary SaveBtn" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
-      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- კატეგოტიებზე მეთოდი -->
+<div class="modal fade scale-up-center CategoryModal" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="box-shadow: 0 0px 10px rgb(0 0 0 / 30%);">
+      <div class="modal-header" style="background-color: #2d69a7; color: white;">
+        <h5 class="modal-title" id="exampleModalLabel2"></h5>
+        <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
+      </div>
+      <!-- <form class="methodCategory"> -->
+        <div class="modal-body" >
+          <div class="CategoryInfo" style="display: flex; align-items: center;">
+              
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary SaveBtn" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
+        </div>
       <!-- </form> -->
     </div>
   </div>
 </div>
 
-<!-- <div class="modal fade scale-up-center CategoryModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" style="background-color: #2d69a7; color: white;">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
-      </div>
-      <form class="addCategory">
-      <div class="modal-body" >
-        <div class="addDiv" style="display: flex; align-items: center;">
-            
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary SaveBtn" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div> -->
-
-<div class="modal fade scale-up-center addProductModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- კპროდუქტის დამატების მოდალი -->
+<div class="modal fade scale-up-center addProductModal" id="addProductModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content" style="border-radius:10px;">
       <div class="modal-header" style="background-color: #2d69a7; color: white;">
@@ -124,11 +122,7 @@
                           
               </div>  
           </div>
-              <!-- <div class="upload-btn imgUpload" onclick="selectFile()">
-                  <i class="fas fa-cloud-upload-alt"></i>
-                  <span>Choose files to Upload</span>
-                  <input type="file" id="upload-file" onchange="uploads(event)" multiple="" accept="image/*">
-              </div> -->
+
             </div>
           </div>
       </div>
@@ -165,7 +159,7 @@ $(document).ready(function(){
     },
     function(data){
         if(data == '0'){
-            window.location.href = "https://gsoft.ge/ImageUpload/index.php";
+            window.location.href = "https://gsoft.ge/morika/index.php";
         }else{
             $('.CategoryList').html(data);
         }
@@ -200,7 +194,7 @@ const dragArea = document.querySelector(".wrapper");
 });
 
 
-var exampleModal = document.getElementById('exampleModal')
+var exampleModal = document.getElementById('addProductModalId')
 exampleModal.addEventListener('show.bs.modal', function (event) {
   // Button that triggered the modal
   var button = event.relatedTarget
@@ -209,7 +203,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
     if(recipient == '@addCategory'){
 
-      $(".addDiv").attr('data-bs-whatever',recipient);
+      $(".addDiv").attr('data-bs-whatever');
 
       $('#exampleModalLabel').text('კატეგორიის დამატება');
     }
@@ -341,7 +335,6 @@ image.onload = function() {
 
         
     $('.Rest-images').eq(a).attr({'org-src':canvas.toDataURL()});
-    $('.BigRest-image').eq(a).attr({'src':canvas.toDataURL()});
     $('.mySlides').eq(a).attr({'src':canvas.toDataURL()});
     // return canvas.toDataURL();
 
@@ -352,8 +345,6 @@ image.onload = function() {
 var main_picture;
 
 //function uploads(event);
-
-
 
 const uploads = (event) => {
 
@@ -373,24 +364,18 @@ for (let i = 0; i < files.length; i++) {
         
         // images.innerHTML += `<div class="loadImage"></div>`
         var a = $('#images').children().length;
-
-        var date = Date.now();
-
         // setTimeout(function(){
         images.innerHTML += `<div class="container containerImg AddImgCount${a}" data-count="${a}" >
           <img class="Rest-images"  data-count="${a}" src="" org-src="">
           <div class="overlay"></div>
           <div class="input">
-            <span class="material-icons dish-icon showRestImg" data-count="${a}"  onclick="openModal(${date})")" data-toggle="tooltip" data-placement="bottom" title="დათვალიერება">visibility</span>
+            <span class="material-icons dish-icon showRestImg" data-count="${a}" onclick="openModal(${a})" data-toggle="tooltip" data-placement="bottom" title="დათვალიერება">visibility</span>
             <!-- <span class="material-icons dish-icon default-icon CheckImg CheckRestImg" data-count="${a}" main-img="0" data-toggle="tooltip" data-placement="bottom" title="მთავარი სურათი">inbox</span> -->
             <span class="material-icons dish-icon deleteImg deleteNewRestImg" data-toggle="modal" data-target=".modal-deleteImg" data-delete="${a}" data-toggle="tooltip" data-placement="bottom" title="წაშლა">delete</span>
           </div>
           <p class="main hidden otherfont">მთავარი</p>
-          <div id="${date}" class="modal modalforPhoto" >
-              <span class="material-icons">
-                close
-              </span>
-              <img class="BigRest-image shadow" src="">
+          <div id="id01" class="modal">
+              <img class="Rest-images" data-count = "${a}" src="'>
           </div>
         </div>`
 
@@ -401,11 +386,9 @@ for (let i = 0; i < files.length; i++) {
         document.querySelectorAll(".deleteImg").forEach(element => {
             element.addEventListener("click", () =>{
               element.parentElement.parentElement.remove();
-              ChangeMainElement();
+              changeMainElement();
             })
         });
-
-        
 
 
         // document.querySelectorAll(".CheckImg").forEach(element => {
@@ -469,18 +452,8 @@ function ChangeMainElement() {
 
 
 function openModal(e) {
-  console.log(e);
-  document.getElementById(e).style.display = "block";
-
-  var modal = document.getElementById(e);
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-  }
+  console.log("kaia");
 }
-
 
 function closeModal() {
     $('#myModal').hide();
@@ -510,8 +483,4 @@ function showDivs(n) {
   x.eq(slideIndex-1).show();
 
 }
-
-
-
-
 </script>
