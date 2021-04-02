@@ -50,6 +50,7 @@
 
 </div>
 
+<!-- კატეგორიის დამატების მოდალი -->
 <div class="modal fade scale-up-center addCategoryModal" id="showaddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
