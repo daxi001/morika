@@ -390,10 +390,13 @@ for (let i = 0; i < files.length; i++) {
           </div>
           <p class="main hidden otherfont">მთავარი</p>
           <div id="${date}" class="modal modalforPhoto" >
-              <span class="material-icons">
-                close
-              </span>
               <img class="BigRest-image shadow" src="">
+              <span class="material-icons next" onclick="next(${date}, 1)">
+                arrow_forward_ios
+              </span>
+              <span class="material-icons previous" onclick="next(${date}, -1)">
+                arrow_back_ios_new
+              </span>
           </div>
         </div>`
 
@@ -470,10 +473,13 @@ function ChangeMainElement() {
   }
 }
 
+modal_count = 0;
 
 function openModal(e) {
-  console.log(e);
+
   document.getElementById(e).style.display = "block";
+
+  modal_count = e;
 
   var modal = document.getElementById(e);
 
@@ -483,6 +489,30 @@ function openModal(e) {
     }
   }
 }
+
+function next(e,direction){ 
+  var modal = document.getElementById(e);
+
+  var parent = modal.parentElement.parentElement.children;
+
+  for (var i=0; i<parent.length; i++){
+    if (e == parent[i].children[4].id){
+      parent[i].children[4].style.display = "none";
+      if (i+direction==parent.length){
+        openModal(parent[0].children[4].id);
+        return;
+      }
+      if (i+direction<0){
+        openModal(parent[parent.length-1].children[4].id);
+        return;
+      } 
+      openModal(parent[i+direction].children[4].id);
+
+    }
+  }
+
+}
+
 
 
 function closeModal() {

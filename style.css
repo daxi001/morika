@@ -480,3 +480,30 @@ opacity: 1;
   border: none;
   background: transparent;
 }
+
+.next{
+    position: absolute;
+    color: red;
+    font-size: 50px;
+    left: 988px;
+    top: 289px;
+    cursor:pointer;
+    padding: 3px 10px;
+    border-radius: 5px
+}
+
+.previous{
+  position: absolute;
+  color:red;
+  font-size: 50px;
+  left: 308px;
+  top: 289px;
+  cursor:pointer;
+  padding: 3px 10px;
+  border-radius: 5px
+}
+
+.next:hover, .previous:hover{
+  background-color:rgb(0,0,0,0.4);
+}
+
