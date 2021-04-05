@@ -507,3 +507,8 @@ opacity: 1;
   background-color:rgb(0,0,0,0.4);
 }
 
+.sort-li{
+  display: none;
+  height: 30px;
+}
+
