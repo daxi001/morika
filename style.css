@@ -480,3 +480,9 @@ opacity: 1;
   border: none;
   background: transparent;
 }
+
+.sort-li{
+  display: none;
+  height: 30px;
+}
+

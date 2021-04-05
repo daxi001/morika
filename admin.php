@@ -15,7 +15,7 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end NavMenu">
   
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><span class="material-icons NavMenuSpan" onclick="myFunction()">more_vert</span></button>
+            <button onclick="myFunction()" class="dropbtn"><span class="material-icons NavMenuSpan">more_vert</span></button>
             <div id="myDropdown" class="dropdown-content">
                 <a class="addCategoryBtn" href="#home"  data-bs-toggle="modal" data-bs-target=".addCategoryModal" data-bs-whatever="@addCategory"><span class="material-icons logoutIcon">add</span>&nbsp;კატეგორიის დამატება</a>
                 <!-- <a href="#about" data-bs-toggle="modal" data-bs-target=".addProductModal" data-bs-whatever="@addProduct"><span class="material-icons logoutIcon">add</span>&nbsp;პროდუქტის დამატება</a> -->
@@ -195,8 +195,6 @@ window.onclick = function(event) {
 }
 
 const dragArea = document.querySelector(".wrapper");
-
-            console.log(dragArea);
 
             new Sortable(dragArea,{
               animation: 350
