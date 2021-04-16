@@ -4,7 +4,7 @@
 <nav class="navbar navbar-light" style="background-color: #1f5881; height: 50px;">
 <div class="container-fluid NavbarContainer">
     <!-- <a class="navbar-brand">Navbar</a> -->
-    <h3 class="SiteTitle">მორიკა</h3>
+    <h3 class="SiteTitle otherfont">მორიკა</h3>
     
     <!-- <div> -->
       <form class="d-flex">
@@ -29,7 +29,7 @@
 </nav>
 <div class="d-flex flex-column p-3 text-white bg-dark CategoryBar" style="width: 280px;">
 <h3 class="otherfont">კატეგორია</h3>
-  <ul class="nav nav-pills flex-column mb-auto CategoryList">
+  <ul class="nav nav-pills flex-column mb-auto adminCategoryList">
 
   </ul>
 </div>
@@ -51,17 +51,38 @@
 </div>
 
 <!-- კატეგორიის დამატების მოდალი -->
-<div class="modal fade scale-up-center addCategoryModal" id="showaddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+<div class="modal fade scale-up-center addCategoryModal" id="showaddModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollableg">
     <div class="modal-content">
       <div class="modal-header" style="color: white;">
-        <h5 class="modal-title" id="exampleModalLabel">მეთოდები კატეგორიებზე</h5>
+        <h5 class="modal-title otherfont" id="exampleModalLabel1">მეთოდები კატეგორიებზე</h5>
         <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
       </div>
       <!-- <form class="addCategory"> -->
-      <div class="modal-body" >
-        <div class="addDiv" style="display: flex; align-items: center;">
-            
+      <div class="modal-body" id="ModalBody">
+        <div class="ContextDiv">
+        <ol class="list-group list-group-numbered">
+          <li class="list-group-item addNewCategory" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@addCategory"><span class="material-icons" style="color: #46abe6;">folder</span>&nbsp;კატეგორიის დამატება</li>
+          <li class="list-group-item addTreeCategory" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@treeCategory"><span class="material-icons" style="color: #dc4a12;">perm_media</span>&nbsp;ქვეკატეგორიის დამატება</li>
+          <li class="list-group-item EditSpaceButton" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@editCategory"><span class="material-icons" style="color: #1bb127;">edit</span>&nbsp;კატეგორიის რედაქტირება</li>
+          <li class="list-group-item DeleteList" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@delCategory"><span class="material-icons" style="color: #ad211a;">delete</span>&nbsp;კატეგორიის წაშლა</li>
+        </ol>
+        </div>
+        <div class="container">
+            <div style="display: flex; margin-left: 25px; margin-bottom: 30px;">
+              <div class=" margin_bottom" data-id="" parent-id=""></div>
+              <div style="width: 185px;">
+                <label for="ChildInput" style="margin-bottom: 10px;">კატეგორიის დამატება</label>
+                <input class="addNewChildInput" id="addNewChildInput" type="text" autocomplete="off">
+              </div>
+              <div class="CategoryChildDiv" style="top: 34px;">
+                <span class="material-icons addParentCategory" parent-id="" style="color: #2bd030; font-weight: bold;">done</span>
+                <span class="material-icons removeParentCategory" parent-id="" style="color: red; font-weight: bold;">close</span>
+              </div>
+              </div>
+          <div class="addDiv border-left" style="" parent_id="0">
+              
+          </div>
         </div>
       </div>
       <!-- <div class="modal-footer">
@@ -77,11 +98,11 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="box-shadow: 0 0px 10px rgb(0 0 0 / 30%);">
       <div class="modal-header" style="background-color: #2d69a7; color: white;">
-        <h5 class="modal-title" id="exampleModalLabel2"></h5>
+        <h5 class="modal-title otherfont" id="exampleModalLabel2"></h5>
         <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
       </div>
-      <!-- <form class="methodCategory"> -->
-        <div class="modal-body" >
+      <form class="methodCategory">
+        <div class="modal-body " >
           <div class="CategoryInfo" style="display: flex; align-items: center;">
               
           </div>
@@ -89,17 +110,17 @@
         <div class="modal-footer">
           <button class="btn btn-primary SaveBtn" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
         </div>
-      <!-- </form> -->
+      </form>
     </div>
   </div>
 </div>
 
 <!-- კპროდუქტის დამატების მოდალი -->
-<div class="modal fade scale-up-center addProductModal" id="addProductModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade scale-up-center addProductModal" id="addProductModalId" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content" style="border-radius:10px;">
       <div class="modal-header" style="background-color: #2d69a7; color: white;">
-        <h5 class="modal-title otherfont" id="exampleModalLabel">პროდუქტის დამატება</h5>
+        <h5 class="modal-title otherfont" id="exampleModalLabel3">პროდუქტის დამატება</h5>
         <span class="material-icons" data-bs-dismiss="modal" aria-label="Close" style="color: white; cursor: pointer;">close</span>
       </div>
       <form class="addCategory">
@@ -127,11 +148,11 @@
                           
               </div>  
           </div>
-              <!-- <div class="upload-btn imgUpload" onclick="selectFile()">
+              <div class="upload-btn imgUpload" onclick="selectFile()">
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span>Choose files to Upload</span>
                   <input type="file" id="upload-file" onchange="uploads(event)" multiple="" accept="image/*">
-              </div> -->
+              </div>
             </div>
           </div>
       </div>
@@ -170,11 +191,63 @@ $(document).ready(function(){
         if(data == '0'){
             window.location.href = "https://gsoft.ge/morika/index.php";
         }else{
-            $('.CategoryList').html(data);
+            $('.adminCategoryList').html(data);
+            
+        $('.CategoryList').each( function() {
+            $(this).attr('parent-id');
+            $(this).attr('ischildhiden','0');
+            if($(this).attr('parent-id') > 0){
+                $(this).hide();
+            }
+        });
         }
         
     })
 
+// $(document).on('click','.showMe',function(e){
+    
+//     e.preventDefault();
+    
+    
+//     var id = $(this).closest('li').attr('data-id');
+//     var ischildhiden =  $(this).closest('li').attr('ischildhiden');
+    
+
+//     if(ischildhiden == 1){
+//         hideChilds(id); 
+//         $(this).css('transform','rotate(0deg)')
+//         $(this).attr('ischildhiden',0);
+//         ischildhiden = 0;
+//         $(this).closest('li').attr('ischildhiden', "0");
+//     }else{
+//         $(this).css('transform','rotate(90deg)')
+//         $(this).attr('ischildhiden',1);
+//         $(".CategoryList").each(function(){
+        
+//             if($(this).attr('parent-id') == id) { 
+//                 $(this).show(0);   
+//             }
+//             ischildhiden = 1;
+//     });
+//         $(this).closest('li').attr('ischildhiden', "1");
+    
+//     }
+    
+// });
+
+    // function hideChilds(pid){
+            
+    //         var data = $('.adminCategoryList').find("[parent-id='" + pid + "']");
+            
+    //         for(var i = 0; i < data.length; i++){
+                
+    //             var id = data.eq(i).attr('data-id');
+                
+    //             data.eq(i).hide(0);
+    //             hideChilds(id);
+    //             data.eq(i).attr('ischildhiden', "1");    
+    //         } 
+    //     }
 })
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -195,27 +268,26 @@ window.onclick = function(event) {
 }
 
 const dragArea = document.querySelector(".wrapper");
-
-            new Sortable(dragArea,{
-              animation: 350
+    new Sortable(dragArea,{
+    animation: 350
 });
 
 
-var exampleModal = document.getElementById('addProductModalId')
-exampleModal.addEventListener('show.bs.modal', function (event) {
-  // Button that triggered the modal
-  var button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  var recipient = button.getAttribute('data-bs-whatever')
+// var exampleModal = document.getElementById('addProductModalId')
+// exampleModal.addEventListener('show.bs.modal', function (event) {
+//   // Button that triggered the modal
+//   var button = event.relatedTarget
+//   // Extract info from data-bs-* attributes
+//   var recipient = button.getAttribute('data-bs-whatever')
 
-    if(recipient == '@addCategory'){
+//     if(recipient == '@addCategory'){
 
-      $(".addDiv").attr('data-bs-whatever');
+//       $(".addDiv").attr('data-bs-whatever');
 
-      $('#exampleModalLabel').text('კატეგორიის დამატება');
-    }
+//       $('#exampleModalLabel').text('კატეგორიის დამატება');
+//     }
 
-})
+// })
 
 
 function selectFile(){
@@ -388,13 +460,10 @@ for (let i = 0; i < files.length; i++) {
           </div>
           <p class="main hidden otherfont">მთავარი</p>
           <div id="${date}" class="modal modalforPhoto" >
+              <span class="material-icons">
+                close
+              </span>
               <img class="BigRest-image shadow" src="">
-              <span class="material-icons next" onclick="next(${date}, 1)">
-                arrow_forward_ios
-              </span>
-              <span class="material-icons previous" onclick="next(${date}, -1)">
-                arrow_back_ios_new
-              </span>
           </div>
         </div>`
 
@@ -471,13 +540,10 @@ function ChangeMainElement() {
   }
 }
 
-modal_count = 0;
 
 function openModal(e) {
-
+  console.log(e);
   document.getElementById(e).style.display = "block";
-
-  modal_count = e;
 
   var modal = document.getElementById(e);
 
@@ -487,61 +553,6 @@ function openModal(e) {
     }
   }
 }
-
-function next(e,direction){ 
-  var modal = document.getElementById(e);
-
-  var parent = modal.parentElement.parentElement.children;
-
-  for (var i=0; i<parent.length; i++){
-    if (e == parent[i].children[4].id){
-      parent[i].children[4].style.display = "none";
-      if (i+direction==parent.length){
-        openModal(parent[0].children[4].id);
-        return;
-      }
-      if (i+direction<0){
-        openModal(parent[parent.length-1].children[4].id);
-        return;
-      } 
-      openModal(parent[i+direction].children[4].id);
-
-    }
-  }
-
-}
-
-
-
-function closeModal() {
-    $('#myModal').hide();
-}
-
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-  showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = $(".mySlides");
-
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x.eq(i).hide();
-  }
-
-  x.eq(slideIndex-1).show();
-
-}
-
 
 
 

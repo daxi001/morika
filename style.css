@@ -75,19 +75,39 @@
   .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #3e6780  !important;
+    padding-left: 20px;
 }
 
+/* .CategoryNameLink{
+  color: rgb(0, 0, 0);
+  background-color: #ffffff  !important;
+  padding-left: 20px;
+} */
+
 .CategoryList{
-    top: 10px;
-    position: relative;
+  top: 15px;
+  position: relative;
+  /* margin-top: 5px; */
+  border-left: 1px solid black !important;
+  height: 30px;
+}
+.CategoryList div{
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+.CategoryListModal li{
+  position: relative;
 }
 
 .CategoryList li,
 .userCategoryList li,
-.CategoryListModal li{
-    margin-top: 5px;
-    position: relative;
+.adminCategoryList li{
+  margin-top: 5px;
+  position: relative;
 }
+
+
 .logoutIcon{
     /* position: absolute;
     right: 20px; */
@@ -158,13 +178,13 @@
 }
 
 .CategoryMenuDiv{
-  width: 28px;
+  width: 120px;
   white-space: nowrap;
   transition: width ease 250ms;
   overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 6px;
+  position: relative;
+  left: 10px;
+  top: -6px;
 }
 
 .CategoryMenuDiv button {
@@ -173,7 +193,7 @@
   border: none;
   outline: none;
   user-select: none;
-  width: 25px;
+  width: 22px;
 }
 
 ::-webkit-scrollbar {
@@ -382,17 +402,31 @@ opacity: 1;
 }
 
 .TreeCollapse{
-  width: 220px;
-  top: 17px;
+  width: 230px;
+  top: 8px;
   position: relative;
   left: 18px;
   bottom: 14px;
 }
 
-#ProductTree{
+.ProductTree{
   position: relative;
   bottom: 5px;
   border: 2px solid #60a7ef !important;
+  right: 17px;
+  width: 215px;
+}
+.TreeCollapse button{
+
+  position: absolute;
+  right: 0;
+  top: 3px;
+  border: none;
+  background-color: transparent;
+}
+.TreeCollapse span{
+  color: green;
+  font-weight: bold;
 }
 
 .make_left_border{
@@ -471,7 +505,7 @@ opacity: 1;
 /* #2d69a7 - აჩიას ფერი*/
 
 .CategoryModal{
-  height: 600px;
+  height: 450px;
   overflow: auto;
 }
 
@@ -481,34 +515,178 @@ opacity: 1;
   background: transparent;
 }
 
-.next{
-    position: absolute;
-    color: red;
-    font-size: 50px;
-    left: 988px;
-    top: 289px;
-    cursor:pointer;
-    padding: 3px 10px;
-    border-radius: 5px
-}
-
-.previous{
-  position: absolute;
-  color:red;
-  font-size: 50px;
-  left: 308px;
-  top: 289px;
-  cursor:pointer;
-  padding: 3px 10px;
-  border-radius: 5px
-}
-
-.next:hover, .previous:hover{
-  background-color:rgb(0,0,0,0.4);
-}
-
 .sort-li{
   display: none;
   height: 30px;
 }
 
+.showMe{
+  color: #00adff;
+    font-size: 18px;
+    /* top: 20px; */
+    /* position: relative; */
+    font-weight: bold;
+    /* left: 15px; */
+    transform: rotate(0deg);
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    height: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.ContextDiv{
+  display: none;
+  position: fixed;
+  height: 200px;
+  align-items: center;
+  border: 1px solid #a6cff9;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.ContextDiv ol li{
+  border: none !important;
+  cursor: pointer;
+  display: flex;
+}
+.ContextDiv ol li:hover{
+  background-color: #0981d6;
+  color: white;
+}
+/* .ContextDiv ol li span{
+  color: #46abe6;
+} */
+
+#ModalBody{
+  display: flex;
+  justify-content: center;
+}
+
+.dragging{
+  opacity: .5;
+}
+
+.showdiv{
+  display: none;
+  height: 40px;
+  background-color: white;
+}
+
+.CategoryNameLink{
+  text-decoration: none;
+  color: black;
+}
+
+.DeleteListBtn{
+  display: none;;
+}
+
+.showAddInput{
+
+  width: 213px;
+  padding-left: 18px;
+  margin-top: 5px;
+
+}
+
+.showAddInput div input{
+  width: 100%;
+}
+
+.appendDiv{
+  border-left: 1px solid black;
+  /* margin-left: 24px; */
+  z-index: 2
+  /* padding-top: 15px; */
+}
+
+.addNewCategoryIcon{
+  display: flex;    
+  margin-left: 10px;
+}
+
+.CategoryChildDiv span{
+  cursor: pointer;
+}
+
+.beforeDiv{
+  display:none;
+  border-left: 1px solid black;
+  height: 45px;
+}
+
+.lineDiv{
+  /* display:none; */
+  z-index: 2;
+  border-left: 1px solid black;
+}
+
+.block{
+  width:17px;
+  height:17px;
+  background-color:#7bb0ff;
+  border-radius:3px;
+  position:relative;
+  left:-8px;
+  top:-8px;
+  z-index: 1;
+}
+
+.border-left{
+  border-left:2px solid black;
+  margin-left:20px;
+  position: relative;
+  top: 0px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.lines{
+  width:20px;
+  height:15px;
+  border-top:2px solid black;
+  position:relative;
+  top:0px;
+  left: -22px;
+}
+
+.is_hidden{
+  display:none;
+}
+
+.fas{
+  position: relative;
+  top: -3px;
+  left: 1px;
+}
+
+.category_alone{
+  position: relative;
+  top: -5px;
+  left: 10px;
+  font-family: newfont;
+}
+
+.margin_bottom{
+  margin-left: -11px;
+  margin-top: -4px;
+}
+
+.ChildInput{
+  top: -7px;
+  position: relative;
+}
+
+.CategoryChildDiv{
+  width: 120px;
+  position: relative;
+  left: 10px;
+  top: -6px;
+}
+
+.ParentFunc{
+  display: flex;
+  margin-top: 5px;
+}
