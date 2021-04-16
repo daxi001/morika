@@ -31,21 +31,9 @@ $(document).on('submit','.addCategory', function(e){
     let dataid = $('.SaveBtn').attr('data-id')  || '';
     let CategoryLength = $('.CategoryListModal').children('li').length;
 
-    // $('.CategoryListModal').append('<li class="nav-item">'+
-    //                                 '<a href="#" class="nav-link active">'+categoryname+'</a>'+
-    //                                 '<div class="CategoryMenuDiv">'+
-    //                                 '<span class="material-icons growWidtDiv" style="cursor: pointer; user-select: none; font-weight: bold; color: white;">keyboard_arrow_left</span>'+
-    //                                 '<button class="EditSpaceButton" type="button" data-bs-toggle="modal" data-bs-target=".CategoryModal" data-bs-whatever="@editCategory" name="editSpaceName" data-id="" style="color: black !important;"><span class="material-icons" style="color: orange;">edit</span></button>'+
-    //                                 '<button class="DeleteList" type="button" data-bs-toggle="modal" data-bs-target=".CategoryModal" data-bs-whatever="@delCategory" name="Space" data-id="" style="color: black !important;"><span class="material-icons" style="color: red; font-weight: bold;">close</span></button>'+
-    //                                 '<button class="treeList" type="button" data-bs-toggle="" href="#multiCollapseExample" role="button" aria-expanded="false" aria-controls="multiCollapseExample" data-modul="0" onclick="toggleCollapse(this)" name="Space" data-id="" style="color: black !important;"><span class="material-icons" style="color: white; font-weight: bold;">add</span></button>'+
-    //                                 '</div>'+
-    //                                 '</li>'+
-    //                                 '<div class="collapse multi-collapse TreeCollapse" id="multiCollapseExample">'+
-    //                                 '<input type="text" class="form-control" id="ProductTree" autocomplete="off">'+
-    //                                 '</div>')
-
     addInfo(categoryname, categoryplace, recipient,dataid);
 })
+
 
 $(document).on('click','.SaveBtn', function(e){
     e.preventDefault();
@@ -231,4 +219,41 @@ function toggleCollapse(a){
     }
     
 }
+
+// $(document).on('click','.ProductUpload', async function(){
+
+//     $.post('/admin',
+//     {
+//         showCategoryOnModal:'showCategoryOnModal'
+//     },
+//     function(data){
+        
+//         $('.selectCategory').html('<option disabled selected hidden class="otherfont">აირჩიეთ კატეგორია</option>'+data)
+//     })
+
+    
+//     setTimeout(function(){ 
+//         var selection = document.getElementById("selection").options;
+        
+//         for (var i=1; i<selection.length; i++){
+//             if (selection[i].getAttribute("parent-id")==0){
+//                 recursion(selection[i].getAttribute("value"), 1);
+//             }
+//         }
+//     }, 500);
+
+//     function recursion(parent_element , n){
+
+//         var selection = document.getElementById("selection").options;
+        
+//         for (var i=1; i<selection.length; i++){
+//             if (selection[i].getAttribute("parent-id") == parent_element){
+//                 selection[i].innerHTML;
+//                 recursion(selection[i].getAttribute("value"), 2);
+//             }
+//         }
+//     }
+  
+// })
+
 
