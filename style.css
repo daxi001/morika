@@ -120,6 +120,9 @@ body{
     }
   }
   
+  .container-fluid{
+      padding-left: 300px;
+  }
   .CategoryBar{
     height: 100%;
     position: fixed;
@@ -131,24 +134,33 @@ body{
   .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #3e6780  !important;
+    padding-left: 20px;
 }
 
 .CategoryList{
-    top: 10px;
-    position: relative;
+  top: 15px;
+  position: relative;
+  /* margin-top: 5px; */
+  border-left: 1px solid black !important;
+  height: 30px;
+}
+.CategoryList div{
+  margin-left: 15px;
+  margin-top: 2px;
 }
 
-.Category{
-  display:none;
+.CategoryListModal li{
+  position: relative;
 }
 
 .CategoryList li,
 .userCategoryList li,
-.adminCategoryList li,
-.CategoryListModal li{
-    margin-top: 5px;
-    position: relative;
+.adminCategoryList li{
+  margin-top: 5px;
+  position: relative;
 }
+
+
 .logoutIcon{
     /* position: absolute;
     right: 20px; */
@@ -219,13 +231,13 @@ body{
 }
 
 .CategoryMenuDiv{
-  width: 28px;
+  width: 120px;
   white-space: nowrap;
   transition: width ease 250ms;
   overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 6px;
+  position: relative;
+  left: 10px;
+  top: -6px;
 }
 
 .CategoryMenuDiv button {
@@ -234,7 +246,7 @@ body{
   border: none;
   outline: none;
   user-select: none;
-  width: 25px;
+  width: 22px;
 }
 
 ::-webkit-scrollbar {
@@ -277,12 +289,8 @@ body{
 }
 
 .imgUpload input{
-  display: none; 
-}
+  display: none;
 
-.input{
-  left:10px !important;
-  top:15px !important;
 }
 
 .images{
@@ -375,7 +383,7 @@ opacity: 1;
 }
 
 .addPhoto{
-  background-color:#0981d6 !important; 
+  background-color:#0d6efd;
   color:white;
   padding:7px 10px;
   border-radius: 5px;
@@ -426,14 +434,16 @@ opacity: 1;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow-y:hidden !important;
+  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-  text-align:center;
-  padding-top:70px;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
 }
 
-
+.addPhoto:hover{
+  background-color: #115fd4;
+  cursor:pointer;
+}
 
 .headerForProducts{
   display: flex;
@@ -450,6 +460,7 @@ opacity: 1;
   color:white;
   width:250px;
   border-radius: 10px !important;
+  width: 250px;
   height: 50px;
 }
 
@@ -473,17 +484,31 @@ opacity: 1;
 }
 
 .TreeCollapse{
-  width: 220px;
-  top: 17px;
+  width: 230px;
+  top: 8px;
   position: relative;
   left: 18px;
   bottom: 14px;
 }
 
-#ProductTree{
+.ProductTree{
   position: relative;
   bottom: 5px;
   border: 2px solid #60a7ef !important;
+  right: 17px;
+  width: 215px;
+}
+.TreeCollapse button{
+
+  position: absolute;
+  right: 0;
+  top: 3px;
+  border: none;
+  background-color: transparent;
+}
+.TreeCollapse span{
+  color: green;
+  font-weight: bold;
 }
 
 .make_left_border{
@@ -493,7 +518,7 @@ opacity: 1;
 
 .inputForProducts{
   margin-bottom:13px;
-  border:#7bb0ff 2px solid;
+  border:#619ffc 2px solid;
   border-radius: 5px !important;
   padding:2px;
 }
@@ -504,7 +529,7 @@ opacity: 1;
 
 
 .input_title{
-  padding:0px;
+  font-weight: 500 !important;
 }
 
 #images{
@@ -519,6 +544,12 @@ opacity: 1;
   border: 3px solid #66aff7 !important;
 }
 
+.SaveBtn{
+  position: relative;
+  float: right;
+  right: 10px;
+  background-color: #0d6efd;
+}
 
 .addCategoryIcon{
   color: green;
@@ -532,14 +563,13 @@ opacity: 1;
 
 .Rest-images{
   border-radius: 3px;
-  border: 2px solid #0981d6; 
-  cursor:pointer;
+  border: 5px solid rgb(72, 188, 232); 
 }
 
 .main{
     position: absolute;
     top: 76px;
-    background-color:#0981d6;
+    background-color: rgb(72, 188, 232);
     width: 100%;
     text-align: center;
     color: white;
@@ -566,7 +596,7 @@ opacity: 1;
 /* #2d69a7 - აჩიას ფერი*/
 
 .CategoryModal{
-  height: 600px;
+  height: 450px;
   overflow: auto;
 }
 
@@ -618,6 +648,22 @@ opacity: 1;
   height: 30px;
 }
 
+.showMe{
+  color: #00adff;
+    font-size: 18px;
+    /* top: 20px; */
+    /* position: relative; */
+    font-weight: bold;
+    /* left: 15px; */
+    transform: rotate(0deg);
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    height: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
 .modalforDelete, .modal_for_product_delete{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -653,6 +699,26 @@ opacity: 1;
   border-radius: 10px;
   margin-top:100px;
   border-top:20px solid #0d6efd;
+}
+
+.ContextDiv{
+  display: none;
+  position: fixed;
+  height: 200px;
+  align-items: center;
+  border: 1px solid #a6cff9;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.ContextDiv ol li{
+  border: none !important;
+  cursor: pointer;
+  display: flex;
+}
+.ContextDiv ol li:hover{
+  background-color: #0981d6;
+  color: white;
 }
 
 .deleteModalTitle{
@@ -707,7 +773,7 @@ opacity: 1;
   cursor:pointer
 }
 
-.dropdown-edit-content {
+.ContextDiv, .dropdown-edit-content{
   display: none;
   background-color: none !important;
   padding: 3px 0px 0px 0px;
@@ -973,6 +1039,70 @@ p{
 
 .is_hidden{
   display:none;
+}
+
+#ModalBody{
+  display: flex;
+  justify-content: center;
+}
+
+.dragging{
+  opacity: .5;
+}
+
+.showdiv{
+  display: none;
+  height: 40px;
+  background-color: white;
+}
+
+.CategoryNameLink{
+  text-decoration: none;
+  color: black;
+}
+
+.DeleteListBtn{
+  display: none;;
+}
+
+.showAddInput{
+
+  width: 213px;
+  padding-left: 18px;
+  margin-top: 5px;
+
+}
+
+.showAddInput div input{
+  width: 100%;
+}
+
+.appendDiv{
+  border-left: 1px solid black;
+  /* margin-left: 24px; */
+  z-index: 2
+  /* padding-top: 15px; */
+}
+
+.addNewCategoryIcon{
+  display: flex;    
+  margin-left: 10px;
+}
+
+.CategoryChildDiv span{
+  cursor: pointer;
+}
+
+.beforeDiv{
+  display:none;
+  border-left: 1px solid black;
+  height: 45px;
+}
+
+.lineDiv{
+  /* display:none; */
+  z-index: 2;
+  border-left: 1px solid black;
 }
 
 .fas{
