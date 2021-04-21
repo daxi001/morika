@@ -2,8 +2,8 @@ $(document).on('click','.InputAdmin',function(){
 
     let adminname = $('#user-name').val();
     let adminpass = $('#user-pass').val();
-    
-    $.post('/client',{
+
+    $.post('/uploadindex',{
         isseteadmin: 'isseteadmin',
         adminname: adminname,
         adminpass: adminpass
@@ -14,8 +14,7 @@ $(document).on('click','.InputAdmin',function(){
             $('#user-name').css('border','solid red');
             $('#user-pass').css('border','solid red');
         }else{
-
-            window.location.href = "https://archili.gsoft.ge/admin"
+            window.location.href = "https://gsoft.ge/morika/admin.php"
         }
 
     })
@@ -32,9 +31,20 @@ $(document).on('submit','.methodCategory', function(e){
     let dataid = $('.SaveBtn').attr('data-id')  || '';
     let CategoryLength = $('.CategoryListModal').children('li').length;
     let parentid = 0;
+    // $('.CategoryListModal').append('<li class="nav-item">'+
+    //                                 '<a href="#" class="nav-link active">'+categoryname+'</a>'+
+    //                                 '<div class="CategoryMenuDiv">'+
+    //                                 '<span class="material-icons growWidtDiv" style="cursor: pointer; user-select: none; font-weight: bold; color: white;">keyboard_arrow_left</span>'+
+    //                                 '<button class="EditSpaceButton" type="button" data-bs-toggle="modal" data-bs-target=".CategoryModal" data-bs-whatever="@editCategory" name="editSpaceName" data-id="" style="color: black !important;"><span class="material-icons" style="color: orange;">edit</span></button>'+
+    //                                 '<button class="DeleteList" type="button" data-bs-toggle="modal" data-bs-target=".CategoryModal" data-bs-whatever="@delCategory" name="Space" data-id="" style="color: black !important;"><span class="material-icons" style="color: red; font-weight: bold;">close</span></button>'+
+    //                                 '<button class="treeList" type="button" data-bs-toggle="" href="#multiCollapseExample" role="button" aria-expanded="false" aria-controls="multiCollapseExample" data-modul="0" onclick="toggleCollapse(this)" name="Space" data-id="" style="color: black !important;"><span class="material-icons" style="color: white; font-weight: bold;">add</span></button>'+
+    //                                 '</div>'+
+    //                                 '</li>'+
+    //                                 '<div class="collapse multi-collapse TreeCollapse" id="multiCollapseExample">'+
+    //                                 '<input type="text" class="form-control" id="ProductTree" autocomplete="off">'+
+    //                                 '</div>')
 
-
-    addInfo(categoryname, categoryplace, recipient,dataid,parentid);
+    addInfo(categoryname, categoryplace, recipient,dataid),parentid;
 })
 
 
@@ -496,218 +506,59 @@ $(document).on('submit', '.addTree', function(e){
 })
 
 
+// კატეგორიის გამოჩენა დასაწყისი :(
+    // $(document).ready(function(){
 
 
-//მთავარი კატეგორიების რედაქტირების მოდალის გამოჩენა-დამალვის ფუნქციები.
+    $(document).on('click','.showMe',function(e){
 
-function checker(n,arr){
-    console.log(arr)
-    if (arr.getAttribute("ischildhiden")==0){
-        arr.setAttribute("ischildhiden",1);
+        e.preventDefault();
         
-        openChild(n,arr);
         
-    }else{
+        var id = $(this).parent('div').attr('data-id');console.log(id);
+        var ischildhiden =  $(this).attr('ischildhiden');
         
-        hideChild(n,arr);
-        arr.setAttribute("ischildhiden",0);
+            
+        if(ischildhiden == 1){
+ 
+            $(this).text('add')
+            $(this).attr('ischildhiden',0);
         
-    }
-    }
-    
-    function hideChild(n,arr){
-        
-    arr.children.innerHTML = "add";
-    
-    arr = arr.closest('.addDiv').querySelectorAll(".border-left");
-    for (var i=0; i<arr.length; i++){
-        if(arr[i].getAttribute("data-id")==n){
-        arr[i].classList.add("is_hidden");
+        }else{
+            $(this).text('remove')
+            $(this).attr('ischildhiden',1);
+
         
         }
-    }
-    }
-    
-    function openChild(n,arr){
-
-    arr.children.innerHTML = "remove";
-    
-    arr = arr.closest('.addDiv').querySelectorAll(".border-left");
-    for (var i=0; i<arr.length; i++){
-        if(arr[i].getAttribute("data-id")==n){
-        arr[i].classList.remove("is_hidden");
-        }
-    }
-    
-}
-
-
-//პროდუქტის დამატების მოდალში კატეგორიების გამოჩენა-დახურვა. 
-
-function showPruductCategories(n,arr){
-    
-    if (arr.getAttribute("children_is_hidden")==0){
-        arr.setAttribute("children_is_hidden",1);
-    
-        openProductChild(n,arr);
         
-    }else{
+    });
     
-    hideProductChild(n,arr);
-    arr.setAttribute("children_is_hidden",0);
     
-    }
-}
-      
-function hideProductChild(n,arr){
-
-    arr.innerHTML = "add";
-    console.log(arr.textContent);
-    arr = arr.closest('.Add_category').querySelectorAll(".border-left");
-    for (var i=0; i<arr.length; i++){
-        if(arr[i].getAttribute("data-id")==n){
-        arr[i].classList.add("is_hidden");
+    // function hideChilds(pid){
         
-        }
-    }
-}
-
-function openProductChild(n,arr){
-
-    arr.innerHTML = "remove";
-    console.log(arr.textContent);
-    arr = arr.closest('.Add_category').querySelectorAll(".border-left");
-    for (var i=0; i<arr.length; i++){
-        if(arr[i].getAttribute("data-id")==n){
-        arr[i].classList.remove("is_hidden");
-        }
-    }
-
-}
-
-
-//საიდბარში კატეგორიების გამოჩენა-დამალვის ფუნქციები. 
-$(document).on('click','.CategoryShowIcon',function(e){
-
-
-    e.preventDefault();
-    
-    var id = $(this).closest('li').attr('data-id');
-    var ischildhiden =  $(this).closest('li').attr('ischildhiden');
-    console.log(id);
-    console.log(ischildhiden);
-    if(ischildhiden == 0){
-    
-        hideChilds(id); 
-        $(this).css('transform','rotate(0deg)')
-        $(this).attr('ischildhiden',1);
-        $(this).closest('li').attr('ischildhiden', "1");
-    
-    }else{
-      showChilds(id);
-        $(this).css('transform','rotate(90deg)')
-        $(this).attr('ischildhiden',0);
-        $(".CategoryList").each(function(){
+    //     var data = $('.addDiv').children("[parent-id='" + pid + "']");
         
-            if($(this).attr('parent-id') == id) { 
-                $(this).show(0);
-            }
-        });
+    //     for(var i = 0; i < data.length; i++){
+            
+    //         var id = data.eq(i).attr('data-id');
+            
+    //         data.eq(i).hide(0);
+    //         hideChilds(id);
+    //         data.eq(i).attr('ischildhiden', "1");    
+    //     } 
+    // }
     
-        $(this).closest('li').attr('ischildhiden', "0");
-    }
-    
-});
-    
-    
-//კატეგორიებში შვილების დასამალი რეკურსიული ფუნქცია.
-function hideChilds(pid){
-
-    var data = $('.BothCategory').find("[parent-id='" + pid + "']");
-
-    for(var i = 0; i < data.length; i++){
         
-        var id = data.eq(i).attr('data-id');
-
-
-        if ($("[data-id ="+id+"]").length==2){
-            //console.log($("[data-id ="+id+"]")[0].children[0].children[0].style.transform ="rotate(0deg)");
-            $("[data-id ="+id+"]")[0].children[0].children[0].style.transform ="rotate(0deg)"
-        }
-
-        data.eq(i).hide(0);
-        hideChilds(id);
-        data.eq(i).attr('ischildhiden', "1");  
-    } 
-
-}
+    // });
     
-//კატეგორიებში შვილების გამოსაჩენი ფუნქცია (არა რეკურსიული).
-function showChilds(pid){
-    var data =  $('.BothCategory').find("[parent-id='" + pid + "']");
-
-    for (var i=0; i<data.length; i++){
-        //console.log(data.eq(i));
-        data.eq(i).show(0);
-    }
-
-}
-
-//საიდბარის გამოჩენა-გაქრობა ეკრანის ზომებზე.
-
-function openSideBar(){
-    var sideBar = document.querySelector(".CategoryBar");
-  
-    if (sideBar.classList.contains("is_visible")){
-      sideBar.classList.remove("is_visible");
-    }else{
-      sideBar.classList.add("is_visible");
-    }
     
-}
-
-
-//პროდუქტების მოდალში კატეგორიების ბაზიდან წამოღება. დამალვა-გამოჩენა.
-function Open_Categories(){
-    if (document.querySelector(".add_category").classList.contains("is_hidden")){
-  
-      $.post("/admin",{
-  
-        Product_Category: "Product_Category",
-  
-      },function(data){
-        $(".Add_category").html(data);
-      })
-  
-      document.querySelector(".add_category").classList.remove("is_hidden");
-      document.querySelector(".Open_Categories").classList.add("is_hidden");
-      document.querySelector(".textarea").classList.add("is_hidden");
-    }
-}
-
-
-//პროდუქტების მოდალში კატეგორიების არჩევა.  
-function Choose_Category(str){
-    console.log(str)
-    document.querySelector(".Open_Categories").classList.remove("is_hidden");
-    document.querySelector(".Open_Categories").innerHTML= str;
-    document.querySelector(".add_category").classList.add("is_hidden");
-    document.querySelector(".textarea").classList.remove("is_hidden");
-}
-
-//პროდუქტების რედაქტირების მოდალი  
-function OpenRedactModal(){
-    
-}
-  
-    
+    // კატეგორიის გამოჩენა დასასრული :)
 
 
 
     var arrayID = [];
 
     $(document).on('click','.treeList',function(){
-
         let dataid = $(this).attr('data-id');
         let parentid = $(this).attr('parent-id');
         let a = 0;
@@ -740,7 +591,7 @@ function OpenRedactModal(){
                 '<span class="material-icons addNewCategory" parent-id="'+dataid+'"  style="color: #2bd030; font-weight: bold;">done</span>'+
                 '<span class="material-icons removeCategory" parent-id="'+dataid+'"  style="color: red; font-weight: bold;">close</span>'+
             '</div>'+
-            '</div>');
+                    '</div>');
         }
 
 
@@ -793,6 +644,40 @@ function OpenRedactModal(){
     })
 
     
+    function checker(n,arr){
+        
+        if (arr.getAttribute("children_is_hidden")==0){
+            arr.setAttribute("children_is_hidden",1);
+            openChild(n,arr);
+        }else{
+          hideChild(n,arr);
+          arr.setAttribute("children_is_hidden",0);
+        }
+      }
+      
+      function hideChild(n,arr){
+      
+        arr = arr.closest('.addDiv').querySelectorAll(".border-left");
+      
+        for (var i=0; i<arr.length; i++){
+          if(arr[i].getAttribute("data-id")==n){
+            arr[i].classList.add("is_hidden");
+            
+          }
+        }
+      }
+      
+      function openChild(n,arr){
+        
+        arr = arr.closest('.addDiv').querySelectorAll(".border-left");
+
+        for (var i=0; i<arr.length; i++){
+          if(arr[i].getAttribute("data-id")==n){
+            arr[i].classList.remove("is_hidden");
+          }
+        }
+      
+      }
 
       $(document).on('click','.addParentCategory', function(){
 
@@ -826,139 +711,8 @@ function OpenRedactModal(){
         })
       })
 
-
-
       $(document).on('click', '.removeParentCategory', function(){
         $('#addNewChildInput').val('');
       })
 
 
-      function openProductDeleteModal(e){
-        
-        let modal = document.querySelector(".modal_for_product_delete");
-        let id = e.getAttribute('data-id');
-        
-        e = e.closest("li").getAttribute("id");
-    
-        modal.style.display = "block";
-    
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        modal.children[0].children[1].children[1].setAttribute("onclick","deleteProduct(this)");
-        modal.children[0].children[1].children[1].setAttribute("data-id", id);
-    }
-    
-    function deleteProduct(e){
-        
-        let dataid = e.getAttribute('data-id');
-
-        $.post('/adminpage',
-        {
-            deleteproduct: 'deleteproduct',
-            dataid: dataid
-        },
-        function(data){
-            $('.product_list').html(data);
-        })
-        document.querySelector(".modal_for_product_delete").style.display = "none";
-    }
-
-
-    function openEditModal(e){
-        let bswhatever = e.getAttribute('data-bs-whatever');
-        let dataid = e.getAttribute('data-id')
-        console.log(dataid);
-        $.post('/adminpage',
-        {
-            editproduct: 'editproduct',
-            bswhatever: bswhatever,
-            dataid: dataid
-        },
-        function(data){
-            
-            let obj = JSON.parse(data);
-
-            $('#ProductName').val(obj.name);
-            $('#ProductCode').val(obj.code);
-            $('#Product_category').text(obj.categoryName);
-            $('#Product_comment').val(obj.comment);
-            $('#Product_category').attr('send-id',obj.categoryUID);
-
-            $('#images').html('');
-            for(let i = 0; i < obj.imagename.length; i++){
-                $('#images').append(
-                    
-                    '<div class="container containerImg AddImgCount'+i+'" data-count="'+i+'">'+
-
-                '<div class="small_image_parent">'+
-                  '<img class="Rest-images" onclick="openModal(1618951910207)" data-count="'+i+'" src="/upload/morika/'+dataid+'/'+obj.imagename[i].ImgName+'_thumb.jpg">'+
-                '</div>'+
-                
-                '<div class="loader load_count" style=" display:none;"></div>'+
-      
-                '<div class="input">'+
-                '<div class="dropdown-edit">'+
-                  '<span class="edit_toggle">. . .</span>'+
-                  '<div class="dropdown-edit-content">'+
-                    '<p class="editor-function"><span class="material-icons " onclick="openNewDeleteModal(`.modalforDelete`, this)" data-count="'+i+'" data-id="'+obj.imagename[i].Img_UID+'" image-name="'+obj.imagename[i].ImgName+'" image-parent="'+obj.UID+'" style="font-size:20px;">delete</span></p>'+
-                  '</div>'+
-                '</div>'+
-    
-                '</div>'+
-                '<p class="main otherfont main_color">მთავარი</p>'+
-      
-                '<div id="1618951910207" class="modal modalforPhoto " "="">'+
-                  '<span class="material-icons modal_close_icon" onclick="document.getElementById(1618951910207).style.display=`none`">'+
-                    'close'+
-                  '</span>'+
-      
-                  '<div class="fullImg center">'+
-                    '<img class="BigRest-image shadow img-fluid" src="/upload/morika/'+dataid+'/'+obj.imagename[i]+'_thumb.jpg">'+
-                    '<br>'+
-                    '<span class="material-icons previous" onclick="next(1618951910207, -1)">'+
-                      'arrow_back_ios_new'+
-                    '</span>'+
-                    '<span class="material-icons next" onclick="next(1618951910207, 1)">arrow_forward_ios</span>'+
-                    
-                  '</div>'+
-              '</div></div>');
-            }
-
-            $('.main_color').attr('data-id',dataid);
-            ChangeMainElement();
-        })
-    }
-
-
-    
-var imgArray = [];
-
-$(document).on('click','.delProduct', function(){
-    let dataid = $(this).attr('data-id');
-
-    imgArray.push({
-        imgName: $(this).attr('image-name'),
-        imgParent: $(this).attr('image-parent')
-    });
-
-    // $(this).closest('.containerImg').remove();
-
-    $.post('/deleteImg',
-    {
-        deleteImage: 'deleteImage',
-        dataid: dataid,
-        imgArray: imgArray
-    },
-    function(data){
-        console.log(data);
-        
-        // ChangeMainElement();
-        closeDeleteModal();
-        ChangeMainElement();
-    })
-
-})

@@ -1,35 +1,163 @@
-<?php include ROOT . '/morika/header.php';?>
-<?php include ROOT . '/morika/navbar.php';?>
+
+<?php include './header.php';?>
+<nav class="navbar navbar-light" style="background-color: #1f5881; height: 50px;">
+<div class="container-fluid NavbarContainer">
+    <!-- <a class="navbar-brand">Navbar</a> -->
+
+    <span class="material-icons hidden_sidebar_icon" onclick = "openSideBar()">
+      menu
+    </span>
+    <h3 class="SiteTitle otherfont">მორიკა</h3>
+
+    
+    <!-- <div> -->
+      <form class="d-flex">
+          <input class="form-control me-2 Searchinput" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    <!-- </div> -->
+    <span class="material-icons SearchIcon">search</span>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end NavMenu">
+  
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><span class="material-icons NavMenuSpan">more_vert</span></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a class="addCategoryBtn" href="#home"  data-bs-toggle="modal" data-bs-target=".addCategoryModal" data-bs-whatever="@addCategory"><span class="material-icons logoutIcon">add</span>&nbsp;კატეგორიის დამატება</a>
+                <!-- <a href="#about" data-bs-toggle="modal" data-bs-target=".addProductModal" data-bs-whatever="@addProduct"><span class="material-icons logoutIcon">add</span>&nbsp;პროდუქტის დამატება</a> -->
+                <a href="#contact"><span class="material-icons logoutIcon">logout</span>&nbsp;გასვლა</a>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+</nav>
+
+<div class="d-flex flex-column p-3 text-white bg-dark CategoryBar" >
+<h3 class="otherfont">კატეგორია</h3>
+  <ul class="nav nav-pills flex-column mb-auto adminCategoryList">
+
+  </ul>
+</div>
 
 <div class="whole_products">
-  <div class="container-fluid main_products">
+<div class="container-fluid main_products">
+    <div class="headerForProducts">
+      <h3 class="otherfont make_bold Product_list_title" style="margin-top:11px;">პროდუქციის ჩამონათვალი</h3>
+      
+      <button type="button" class="btn ProductUpload otherfont" data-bs-toggle="modal" data-bs-target=".addProductModal">
+        <span class="material-icons icon add_circle">add_circle</span>
+        <span class="product_add_button" style="vertical-align:middle;">პროდუქტის დამატება</span>
+      </button>
+    </div>
 
-      <div class="headerForProducts">
-        <h3 class="otherfont make_bold Product_list_title" style="margin-top:11px;">პროდუქციის ჩამონათვალი</h3>
-        
-        <button type="button" class="btn ProductUpload otherfont" data-bs-toggle="modal" data-bs-target=".addProductModal" data-bs-whatever="@addProduct">
-          <span class="material-icons icon add_circle">add_circle</span>
-          <span class="product_add_button" style="vertical-align:middle;">პროდუქტის დამატება</span>
-        </button>
+    <div class="grid-container product_list" style=" margin-top:35px;">
+      <!-- <div class="row"> -->
+      <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+        <div class="col-lg-4 col-md-6 product_card">
+          <div class="card shadow" style="width: auto;">
+            <img src="/upload/Restaurant_Image/Menu_Image/1/5f8476d23b76e.jpg" class="card-img-top" alt="...">
+            <div class="product-button-parent"style="position:absolute; top:4px; right:7px; display:flex; flex-direction:column;">
+      
+              <span class="edit_toggle Product_button"><span class="material-icons" style="font-size:30px; ">arrow_drop_down</span></span>
+              <div class="Product-edit-content">
+                <p class="Product-editor-function" data-bs-toggle="modal" data-bs-target=".addProductModal"><span class="material-icons "  style="font-size:30px; color:yellow;" onclick="OpenRedactModal()">edit</span></p>
+                <p class="Product-editor-function" ><span class="material-icons "  style="font-size:30px; color:red;" onclick="openDeleteModal('.modal_for_product_delete', this)">delete</span></p>
+              </div>
+            
+            </div>
+            <div class="card-body">
+              <h5 class="card-title otherfont">დასახელება</h5>
+              <p class="card-text otherfont card-explane" style="margin-bottom: 0px;">კოდი: 12345</p>
+              <p class="card-text otherfont card-explane ">კატეგორია: კატეგორია1</p>
+              <p class="card-text otherfont card-explane" style="font-size:12px !important; display:inline-block; width:180px;">კომენტარo შეზღუდული რaოდენობ...</p>
+              <a href="#" class="see_button hover otherfont" style="float:right; font-size:15px; text-align:center;">სრულად</a>
+            </div>
+          </div>
+        </div> 
+     
+
+        <div class="col-lg-4 col-md-6 product_card">
+          <div class="card shadow" style="width: auto;">
+            <img src="/upload/Restaurant_Image/Menu_Image/1/5f8476d23b76e.jpg" class="card-img-top" alt="...">
+            <div class="product-button-parent"style="position:absolute; top:4px; right:7px; display:flex; flex-direction:column;">
+      
+              <span class="edit_toggle Product_button"><span class="material-icons" style="font-size:30px; ">arrow_drop_down</span></span>
+              <div class="Product-edit-content"  >
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:yellow;">edit</span></p>
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:red;">delete</span></p>
+              </div>
+            
+            </div>
+            <div class="card-body">
+              <h5 class="card-title otherfont">დასახელება</h5>
+              <p class="card-text otherfont card-explane" style="margin-bottom: 0px;">კოდი: 12345</p>
+              <p class="card-text otherfont card-explane">კატეგორია: კატეგორია1</p>
+              <p class="card-text otherfont card-explane" style="font-size:12px !important; display:inline-block; width:180px;">კომენტარი: კომენტარo შეზღუდული რაოდენ...</p>
+              <a href="#" class="see_button hover otherfont" style="float:right; font-size:15px; text-align:center;">სრულად</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 product_card">
+          <div class="card shadow" style="width: auto;">
+            <img src="/upload/Restaurant_Image/Menu_Image/1/5f8476d23b76e.jpg" class="card-img-top" alt="...">
+            <div class="product-button-parent"style="position:absolute; top:4px; right:7px; display:flex; flex-direction:column;">
+      
+              <span class="edit_toggle Product_button"><span class="material-icons" style="font-size:30px; ">arrow_drop_down</span></span>
+              <div class="Product-edit-content">
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:yellow;">edit</span></p>
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:red;">delete</span></p>
+              </div>
+            
+            </div>
+            <div class="card-body">
+              <h5 class="card-title otherfont">დასახელება</h5>
+              <p class="card-text otherfont card-explane" style="margin-bottom: 0px;">კოდი: 12345</p>
+              <p class="card-text otherfont card-explane">კატეგორია: კატეგორია1</p>
+              <p class="card-text otherfont card-explane" style="font-size:12px !important; display:inline-block; width:180px;">კომენტარი: კომენტარo შეზღუდული რაოდენ...</p>
+              <a href="#" class="see_button hover otherfont" style="float:right; font-size:15px; text-align:center;">სრულად</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 product_card">
+          <div class="card shadow" style="width: auto;">
+            <img src="/upload/Restaurant_Image/Menu_Image/1/5f8476d23b76e.jpg" class="card-img-top" alt="...">
+            <div class="product-button-parent"style="position:absolute; top:4px; right:7px; display:flex; flex-direction:column;">
+      
+              <span class="edit_toggle Product_button"><span class="material-icons" style="font-size:30px; ">arrow_drop_down</span></span>
+              <div class="Product-edit-content">
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:yellow;">edit</span></p>
+                <p class="Product-editor-function"><span class="material-icons "  style="font-size:30px; color:red;">delete</span></p>
+              </div>
+            
+            </div>
+            <div class="card-body">
+              <h5 class="card-title otherfont">დასახელება</h5>
+              <p class="card-text otherfont card-explane" style="margin-bottom: 0px;">კოდი: 12345</p>
+              <p class="card-text otherfont card-explane">კატეგორია: კატეგორია1</p>
+              <p class="card-text otherfont card-explane" style="font-size:12px !important; display:inline-block; width:180px;">კომენტარი: კომენტარo შეზღუდული რაოდენ...</p>
+              <a href="#" class="see_button hover otherfont" style="float:right; font-size:15px; text-align:center;">სრულად</a>
+            </div>
+          </div>
+        <!-- </div> -->
+
+        <!-- პროდუქტის წაშლის მოდალი -->
+      <div class="modal modal_for_product_delete">    
+        <div class=" modal-sm animate deletion_div">
+            <h5 class="otherfont deleteModalTitle">გსურთ წაშლა?</h5>
+            <div class="flex">
+              <button type="button" class="btn btn-light border_blue otherfont border_6px" style="width:70px !important" onclick="closeDeleteModal()">არა</button>
+              <button type="button" class="btn btn-primary otherfont border_6px" style="width:70px !important">დიახ</button>
+            </div>
+        </div>
       </div>
 
-      <div class="product_list">
 
-
-          <!-- პროდუქტის წაშლის მოდალი -->
-        
-      </div> 
-  </div>
-</div>
-<div class="modal modal_for_product_delete">    
-  <div class=" modal-sm animate deletion_div">
-      <h5 class="otherfont deleteModalTitle">გსურთ წაშლა?</h5>
-      <div class="flex">
-        <button type="button" class="btn btn-light border_blue otherfont border_6px" style="width:70px !important" onclick="closeDeleteModal()">არა</button>
-        <button type="button" class="btn btn-primary otherfont border_6px" style="width:70px !important">დიახ</button>
       </div>
-  </div>
+    </div> 
 </div>
+</div>
+
 
 <!-- კატეგორიის დამატების მოდალი -->
 <div class="modal fade scale-up-center addCategoryModal" id="showaddModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
@@ -52,16 +180,16 @@
         <div class="container">
             <div style="display: flex; margin-left: 25px; margin-bottom: 30px;">
               <div class=" margin_bottom" data-id="" parent-id=""></div>
-                <div style="width: 185px;">
-                  <label for="ChildInput" style="margin-bottom: 10px;">კატეგორიის დამატება</label>
-                  <input class="addNewChildInput" id="addNewChildInput" type="text" autocomplete="off">
-                </div>
-                <div class="CategoryChildDiv" style="top: 34px;">
-                  <span class="material-icons addParentCategory" parent-id="" style="color: #2bd030; font-weight: bold;">done</span>
-                  <span class="material-icons removeParentCategory" parent-id="" style="color: red; font-weight: bold;">close</span>
-                </div>
+              <div style="width: 185px;">
+                <label for="ChildInput" style="margin-bottom: 10px;">კატეგორიის დამატება</label>
+                <input class="addNewChildInput" id="addNewChildInput" type="text" autocomplete="off">
               </div>
-          <div class="addDiv border-left" parent_id="0">
+              <div class="CategoryChildDiv" style="top: 34px;">
+                <span class="material-icons addParentCategory" parent-id="" style="color: #2bd030; font-weight: bold;">done</span>
+                <span class="material-icons removeParentCategory" parent-id="" style="color: red; font-weight: bold;">close</span>
+              </div>
+              </div>
+          <div class="addDiv border-left" style="" parent_id="0">
               
           </div>
         </div>
@@ -118,35 +246,91 @@
                 <input type="text" class="form-control inputForProducts" id="ProductCode" autocomplete="off">
               </div>
 
-              <button class="Open_Categories otherfont"type="button" id="Product_category"  style="margin-top:10px;" onclick ="Open_Categories()">აირჩიეთ კატეგორია</button>
+              <button class="Open_Categories otherfont"type="button" style="margin-top:10px;" onclick ="Open_Categories()">აირჩიეთ კატეგორია</button>
 
               <div class="add_category is_hidden">
                 <div class="Add_category border-left">
+                  <!--
+                  <div class="block margin_bottom" onclick="checker(2, this)" children_is_hidden = "0">	
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <span class="category_alone" onclick="Choose_Category('კატეგორია 1')">კატეგორია 1</span>
+
+    
+                  <div class="border-left is_hidden" parent_id="1" id="2">
+                    <div class="lines"></div>
+                    <div class="block margin_bottom" onclick="checker(3, this)" children_is_hidden = "0">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <span class="category_alone" onclick="Choose_Category('კატეგორია 2')">კატეგორია 2</span>
+                    <div class="border-left is_hidden"  parent_id="2" id="3">
+                      <div class="lines"></div>
+                      <div class="block margin_bottom" onclick="checker(-1, this)" children_is_hidden = "0">
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                      <span class="category_alone" onclick="Choose_Category('კატეგორია 3')">კატეგორია 3</span>
+                    </div>
                   
+                  
+                    <div class="block margin_bottom" onclick="checker(4, this)" children_is_hidden = "0">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <span class="category_alone" onclick="Choose_Category('კატეგორია 4')">კატეგორია 4</span>
+                    <div class="border-left is_hidden " parent_id="2", id="4">
+                      <div class="lines"></div>
+                      <div class="block margin_bottom" onclick="checker(5, this)" children_is_hidden = "0">
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                      <span class="category_alone" onclick="Choose_Category('კატეგორია 5')">კატეგორია 5</span>
+                      <div class="border-left is_hidden" parent_id="4" id="5">
+                        <div class="lines"></div>
+                        <div class="block margin_bottom">
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <span class="category_alone" onclick="Choose_Category('კატეგორია 6')">კატეგორია 6</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="block margin_bottom" onclick="checker(6, this)" children_is_hidden = "0">
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <span class="category_alone" onclick="Choose_Category('კატეგორია 5')">კატეგორია 5</span>
+                  <div class="border-left is_hidden" parent_id="0" id="6">
+                    <div class="lines"></div>
+                    <div class="block margin_bottom">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <span class="category_alone" onclick="Choose_Category('კატეგორია 6')">კატეგორია 6</span>
+                  </div>-->
                 </div>
-              </div>
+</div>
                 
               
               
 
               <div class="form-floating textarea inputForProducts" style="margin-top:25px">
-                <textarea class="form-control " placeholder="Leave a comment here" id="Product_comment"></textarea>
-                <label for="floatingTextarea" class="otherfont " style="font-weight:500;">კომენტარი...</label>
+                <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea" class="otherfont "style="font-weight:500;">კომენტარი...</label>
               </div>
               
             </div>
-
-            <div class="col-lg-8">
+              <div class="col-lg-8">
                 <div class="container make_left_border" style="padding-left:0px !important;">
-                  <h5 class="otherfont input_title" style = "margin-left: 20px;
-    margin-top: 22px; font-weight: 500; margin-bottom: 0px;">ფოტოები</h5>
+                  <h4 class="otherfont" style = "text-align:center; margin-left: 50px; font-weight: 500; margin-bottom: 0px;">ფოტოები</h4>
                   <div class="row images wrapper" id="images" onchange="ChangeMainElement()">
                             
                   </div> 
                 </div>
                 <p align="center" class="otherfont" style="font-size:13px; color: #5E5F5F;;">მთავარი ფოტოს შესაცვლელად გადააადგილეთ ფოტო პირველ ადგილზე.</p>
+              <!-- <div class="upload-btn imgUpload" onclick="selectFile()">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Choose files to Upload</span>
+                  <input type="file" id="upload-file" onchange="uploads(event)" multiple="" accept="image/*">
+              </div>
             </div>
-          
+          </div>
+      </div>
 
       <!-- ფოტოების წაშლის მოდალი -->
       <div id="${date}" class="modal modalforDelete ">    
@@ -154,19 +338,19 @@
             <h5 class="otherfont deleteModalTitle">გსურთ წაშლა?</h5>
             <div class="flex">
               <button type="button" class="btn btn-light border_blue otherfont border_6px" style="width:70px !important" onclick="closeDeleteModal()">არა</button>
-              <button type="button" class="btn btn-primary otherfont border_6px delProduct" style="width:70px !important">დიახ</button>
+              <button type="button" class="btn btn-primary otherfont border_6px" style="width:70px !important">დიახ</button>
             </div>
         </div>
       </div>
 
 
       <div class="modal-footer ProductFooter">
-        <div class="main_color" onclick="selectFile()" style="border-radius: 5px;">
+        <div class="" onclick="selectFile()">
           <input type="file" id="upload-file" onchange="uploads(event)"  multiple="" accept="image/*"hidden/>
-          <label for="actual-btn" class="addPhoto otherfont main_color" >ფოტოს დამატება</label>
+          <label for="actual-btn" class="addPhoto otherfont" >ფოტოს დამატება</label>
         </div>
         <span class="message otherfont" style="color:#5E5F5F;position:relative; font-size:14px;"><span class="material-icons" style="font-size:18px">error_outline</span>&nbsp;ფოტოების მაქსიმალური რაოდენობა: 10</span>
-        <button type="submit" class="btn btn-primary otherfont main_color Product_save_b" onclick="Update_Product(this)" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
+        <button type="submit" class="btn btn-primary SaveBtn otherfont" data-bs-dismiss="modal" id="liveToastBtn">შენახვა</button>
       </div>
       </form>
     </div>
@@ -183,42 +367,26 @@
   </div>
 </div>
 
-<div class="col-lg-12 pagination-position">
-    <?php  
-    // echo $pagination->get(); 
-    ?>
-</div>
-
-<?php include ROOT .'/morika/footer.php';?>
+<?php include './footer.php';?>
 
 
 <script>
 $(document).ready(function(){
-
-  $.post('/adminpage',
-    {
-      selectproduct: 'selectproduct'
-    },
-    function(data){
-        $('.product_list').html(data);
-
-    })
-
     $.post('/admin',
     {
-      selectcategoryList: 'selectcategoryList'
+        selectcategory: 'selectcategory'
     },
     function(data){
         if(data == '0'){
-            // window.location.href = "https://gsoft.ge/morika/index.php";
+            window.location.href = "https://gsoft.ge/morika/index.php";
         }else{
             $('.adminCategoryList').html(data);
 
             var categories = document.querySelector(".adminCategoryList").children;
 
             for (var i=0; i<categories.length; i++){
-              if (categories[i].getAttribute("parent-id")!= 0){
-                categories[i].style.display = "none";
+              if (categories[i].getAttribute("parent-id")== 0){
+                categories[i].style.display = "block";
               };
             }
 
@@ -228,8 +396,6 @@ $(document).ready(function(){
 
 
 })
-
-
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -428,10 +594,7 @@ for (let i = 0; i < files.length; i++) {
 
         // setTimeout(function(){
         images.innerHTML += `<div class="container containerImg AddImgCount${a}" data-count="${a}" >
-
-          <div class="small_image_parent">
-            <img class="Rest-images New_Img" onclick="openModal(${date})" data-count="${a}" src="" org-src="">
-          </div>
+          <img class="Rest-images" onclick="openModal(${date})" data-count="${a}" src="" org-src="">
           
 
           <div class="loader load_count"></div>
@@ -440,7 +603,7 @@ for (let i = 0; i < files.length; i++) {
           <div class="dropdown-edit">
             <span class="edit_toggle">. . .</span>
             <div class="dropdown-edit-content">
-              <p class="editor-function"><span class="material-icons " data-id = "${date}" onclick="openDeleteModal('.modalforDelete', ${date})" style="font-size:20px;">delete</span></p>
+              <p class="editor-function"><span class="material-icons " onclick="openDeleteModal('.modalforDelete', ${date})" style="font-size:20px;">delete</span></p>
             </div>
           </div>
 
@@ -448,7 +611,7 @@ for (let i = 0; i < files.length; i++) {
             <!--<span class="material-icons dish-icon default-icon CheckImg CheckRestImg" data-count="${a}"   main-img="0" data-toggle="tooltip" data-placement="bottom" title="მთავარი სურათი">inbox</span> -->
             <!--<span class="material-icons dish-icon deleteImg deleteNewRestImg" data-toggle="modal" data-target=".modal-deleteImg" onclick="openDeleteModal(${date})" data-toggle="tooltip" data-placement="bottom" title="წაშლა">delete</span>-->
           </div>
-          <p class="main hidden otherfont main_color">მთავარი</p>
+          <p class="main hidden otherfont">მთავარი</p>
 
           <div id="${date}" class="modal modalforPhoto " ">
             <span class="material-icons modal_close_icon" onclick="document.getElementById(${date}).style.display='none'">
@@ -466,6 +629,7 @@ for (let i = 0; i < files.length; i++) {
               </span>
               
             </div>
+          </div>
         </div>`
 
         if (a==0){
@@ -515,8 +679,12 @@ function openModal(e) {
 function openDeleteModal(str,e){
   var modal = document.querySelector(str);
   //str არის მოდალის დასახელება კლასებში.
-  console.log(str);
+  
   //რექვესტის გასაკეთებლად პროდუქტის წაშლისთვის.
+  if (str == ".modal_for_product_delete"){
+
+    e = e.closest(".card");
+  }
 
   modal.style.display = "block";
 
@@ -525,54 +693,9 @@ function openDeleteModal(str,e){
         modal.style.display = "none";
     }
   }
-
-  console.log(e);
   modal.children[0].children[1].children[1].setAttribute("onclick", "deleteElement("+e+")");
-
 }
 
-
-function openNewDeleteModal(str,e){
-  var modal = document.querySelector(str);
-  //str არის მოდალის დასახელება კლასებში.
-
-  modal.style.display = "block";
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-  }
-
-  modal.children[0].children[1].children[1].setAttribute("onclick", "deleteElement("+e.getAttribute("data-id")+")");
-
-  let dataid = e.getAttribute('data-id');
-  if(dataid){
-    
-    let name = e.getAttribute('image-name');
-    let parentid = e.getAttribute('image-parent');
-    modal.children[0].children[1].children[1].setAttribute("data-id", dataid);
-    modal.children[0].children[1].children[1].setAttribute("image-name", name);
-    modal.children[0].children[1].children[1].setAttribute("image-parent", parentid);
-  }
-}
-
-function deleteElement(str){
-
-  console.log(str);
-
-  var elem = $("[data-id="+str+"]")[0];
-
-  console.log(elem);
-
-  console.log(elem.closest(".containerImg"));
-
-  elem.closest(".containerImg").remove();
-  //console.log(str);
-  //document.getElementById(str).parentElement.remove();
-  closeDeleteModal();
-  ChangeMainElement();
-}
 
 //ფოტოს წაშლა
 function closeDeleteModal(){
@@ -583,7 +706,11 @@ function closeDeleteModal(){
   modal1.style.display = "none";
 }
 
-var imgArray = [];
+function deleteElement(e){
+  document.getElementById(e).parentElement.remove();
+  closeDeleteModal();
+  ChangeMainElement()
+}
 
 //შემდეგ ფოტოზე გადასვლა
 function next(e,direction){ 
@@ -623,7 +750,206 @@ document.addEventListener("keyup", (event) => {
 });
 
 
+//კატეგორიების გამოჩენა-დამალვა.
+$(document).on('click','.CategoryShowIcon',function(e){
 
 
+e.preventDefault();
+
+var id = $(this).closest('li').attr('data-id');
+var ischildhiden =  $(this).closest('li').attr('ischildhiden');
+
+if(ischildhiden == 0){
+
+    hideChilds(id); 
+    $(this).css('transform','rotate(0deg)')
+    $(this).attr('ischildhiden',1);
+    $(this).closest('li').attr('ischildhiden', "1");
+
+}else{
+  showChilds(id);
+    $(this).css('transform','rotate(90deg)')
+    $(this).attr('ischildhiden',0);
+    $(".CategoryList").each(function(){
+    
+        if($(this).attr('parent-id') == id) { 
+            $(this).show(0);
+        }
+    });
+
+    $(this).closest('li').attr('ischildhiden', "0");
+}
+
+});
+
+
+//კატეგორიებში შვილების დასამალი რეკურსიული ფუნქცია.
+function hideChilds(pid){
+
+    var data = $('.adminCategoryList').find("[parent-id='" + pid + "']");
+
+    for(var i = 0; i < data.length; i++){
+        
+        var id = data.eq(i).attr('data-id');
+
+
+        if ($("[data-id ="+id+"]").length==2){
+          //console.log($("[data-id ="+id+"]")[0].children[0].children[0].style.transform ="rotate(0deg)");
+          $("[data-id ="+id+"]")[0].children[0].children[0].style.transform ="rotate(0deg)"
+        }
+
+        data.eq(i).hide(0);
+        hideChilds(id);
+        data.eq(i).attr('ischildhiden', "1");  
+    } 
+
+}
+
+//კატეგორიებში შვილების გამოსაჩენი ფუნქცია (არა რეკურსიული).
+function showChilds(pid){
+    var data =  $('.adminCategoryList').find("[parent-id='" + pid + "']");
+
+    for (var i=0; i<data.length; i++){
+      //console.log(data.eq(i));
+      data.eq(i).show(0);
+    }
+
+}
+
+
+//საიდბარის გამოჩენა-გაქრობა ეკრანის ზომებზე.
+
+function openSideBar(){
+  var sideBar = document.querySelector(".CategoryBar");
+
+  if (sideBar.classList.contains("is_visible")){
+    sideBar.classList.remove("is_visible");
+  }else{
+    sideBar.classList.add("is_visible");
+  }
+  
+}
+
+
+//კატეგორიების select-ის ფუნქციონალი.
+
+// function checker(n,arr){
+//   if (arr.getAttribute("children_is_hidden")==0){
+//       arr.setAttribute("children_is_hidden",1);
+//       openChild(n,arr);
+//   }else{
+//     hideChild(n,arr);
+//     arr.setAttribute("children_is_hidden",0);
+//   }
+// }
+
+// function hideChild(n,arr){
+
+//   arr = arr.parentElement.querySelectorAll(".border-left");
+
+//   for (var i=0; i<arr.length; i++){
+//     if(arr[i].getAttribute("id")==n){
+//       arr[i].classList.add("is_hidden");
+      
+//     }
+//   }
+// }
+
+// function openChild(n,arr){
+//   arr = arr.parentElement.querySelectorAll(".border-left");
+
+//   for (var i=0; i<arr.length; i++){
+//     if(arr[i].getAttribute("id")==n){
+//       arr[i].classList.remove("is_hidden");
+//     }
+//   }
+
+// }
+
+$(document).on('click','.showMe',function(e){
+
+e.preventDefault();
+
+
+var id = $(this).parent('div').attr('data-id');console.log(id);
+var ischildhiden =  $(this).attr('ischildhiden');
+
+    
+if(ischildhiden == 1){
+
+    $(this).text('add')
+    $(this).attr('ischildhiden',0);
+
+}else{
+    $(this).text('remove')
+    $(this).attr('ischildhiden',1);
+
+
+}});
+
+function checker(n,arr){
+
+        console.log("123");
+        
+        if (arr.getAttribute("children_is_hidden")==0){
+            arr.setAttribute("children_is_hidden",1);
+            openChild(n,arr);
+        }else{
+          hideChild(n,arr);
+          arr.setAttribute("children_is_hidden",0);
+        }
+      }
+      
+      function hideChild(n,arr){
+      
+        arr = arr.closest('.Add_category').querySelectorAll(".border-left");
+      
+        for (var i=0; i<arr.length; i++){
+          if(arr[i].getAttribute("data-id")==n){
+            arr[i].classList.add("is_hidden");
+            
+          }
+        }
+      }
+      
+      function openChild(n,arr){
+        
+        arr = arr.closest('.Add_category').querySelectorAll(".border-left");
+
+        for (var i=0; i<arr.length; i++){
+          if(arr[i].getAttribute("data-id")==n){
+            arr[i].classList.remove("is_hidden");
+          }
+        }
+      
+      }
+
+function Open_Categories(){
+  if (document.querySelector(".add_category").classList.contains("is_hidden")){
+
+    $.post("/admin",{
+
+      Product_Category: "Product_Category",
+
+    },function(data){
+      $(".Add_category").html(data);
+    })
+
+    document.querySelector(".add_category").classList.remove("is_hidden");
+    document.querySelector(".Open_Categories").classList.add("is_hidden");
+    document.querySelector(".textarea").classList.add("is_hidden");
+  }
+}
+
+function Choose_Category(str){
+  document.querySelector(".Open_Categories").classList.remove("is_hidden");
+  document.querySelector(".Open_Categories").innerHTML= str;
+  document.querySelector(".add_category").classList.add("is_hidden");
+  document.querySelector(".textarea").classList.remove("is_hidden");
+}
+
+function OpenRedactModal(){
+  
+}
 
 </script>

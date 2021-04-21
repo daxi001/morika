@@ -33,6 +33,7 @@ body{
 }
 
 .whole_products{
+  padding-top:50px !important;
   height: 100%;
   width:80%; 
   position:absolute; 
@@ -119,6 +120,9 @@ body{
     }
   }
   
+  .container-fluid{
+      padding-left: 300px;
+  }
   .CategoryBar{
     height: 100%;
     position: fixed;
@@ -560,7 +564,7 @@ opacity: 1;
 
 .Rest-images{
   border-radius: 3px;
-  border: 2px solid #0981d6 !important;
+  border: 5px solid rgb(72, 188, 232); 
 }
 
 .main{
@@ -573,21 +577,9 @@ opacity: 1;
     border-radius:3px;
 }
 
-.modal-body{
-  padding-bottom:0px !important;
-}
-
-.main_color{
-  background-color: #0981d6 !important;
-}
-
-.DeleteListBtn{
-  display: none;;
-}
 
 .modal-content{
   border-radius:20px !important;
-  min-width: 100% !important;
 }
 
 .modal-header{
@@ -773,10 +765,10 @@ opacity: 1;
 .dropdown-edit {
   display: inline-block;
   position: absolute;
-  right: 0px;
+  right: -2px;
   border-bottom-right-radius: 0px !important;
   border-top-left-radius: 0px !important;
-  top: -38px;
+  top: -15px;
   background-color:#0981d6;
   border-radius: 5px;
   padding: 0px 6px 6px 6px ;
@@ -928,7 +920,96 @@ p{
 }
 
 
+/* მედიების პროდუქტების გრიდისთვის */
 
+@media only screen and (min-width: 1400px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px 30px;
+  }
+  .CategoryBar{
+    width:15%;
+  }
+  .whole_products{
+    width:85%; 
+  }
+}
+
+@media screen and (min-width: 1041px) and (max-width: 1400px) { 
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px 30px;
+  }
+  .CategoryBar{
+    width:20% !important;
+  }
+}
+
+@media screen and (min-width:845px) and (max-width: 1040px) { 
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px 40px;
+  }
+  
+}
+
+@media screen and (min-width:640px) and (max-width: 844px) { 
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto ;
+    padding: 10px 60px;
+  }
+}
+
+@media screen and (max-width: 639px) { 
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 20px 70px;
+    padding: 10px 60px;
+  }
+  .product_add_button{
+    display:none;
+  }
+
+  .ProductUpload{
+    width:auto;
+  }
+}
+
+/* მედიების პროდუქტების გრიდისთვის დასასრული */
+
+@media screen and (max-width:1040px){
+  .hidden_sidebar_icon{
+    display:block  !important;
+  }
+  .CategoryBar{
+    opacity:0;
+  }
+  .whole_products{
+    width:100%; 
+  }
+  .ProductUpload{
+    font-size:15px;
+  }
+  .add_circle{
+    font-size:21px !important;
+  }
+}
+
+
+@media screen and (max-width: 980px) {
+  .modalforPhoto {
+    height:1100px;
+  }
+  .message{
+    display: flex;
+    left: -10px;
+  }
+}
 
 /* 
 .block{
@@ -1111,7 +1192,6 @@ p{
   overflow-y:auto;
   border:2px solid #7bb0ff;
   border-radius:5px;
-  margin-top:23px !important;
 } 
 
 .showMe {
@@ -1137,7 +1217,6 @@ p{
   border-radius:5px;
   width:100%;
   text-align: left;
-  margin-top: 23px !important;
 }
 
 .Open_Categories:hover{
